@@ -1,4 +1,5 @@
 import React, { useState } from  "react"
+import PokemonTable from './PokemonTable';
 
 function SearchComponent() {
     const [inputValue, setInputValue] = useState('')
@@ -32,30 +33,7 @@ function SearchComponent() {
             <input type="text" value = {inputValue} onChange={handleInputChange} placeholder="Pokemon Name"/>
             <button className='btn btn-primary' onClick={searchPokemon}>Search</button>
             <br/> <br/>
-            <div>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th scope="col" style={{ border: "1px solid black" }}>Pokemon name</th>
-                            <th scope="col" style={{ border: "1px solid black" }}>Pokemon Height</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {pokemonData ? (
-                            pokemonData.map((data) => (
-                                <tr key={data.id}>
-                                    <td style={{ border: "1px solid black" }}>{data.empName}</td>
-                                    <td style={{ border: "1px solid black" }}>{data.height}</td>
-                                </tr>
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan="2" style={{ border: "1px solid black", textAlign: "center" }}>No data available</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
-            </div>
+            {pokemonData.length > 0 && <PokemonTable pokemonData={pokemonData} />}
         </div>
     );
 }
