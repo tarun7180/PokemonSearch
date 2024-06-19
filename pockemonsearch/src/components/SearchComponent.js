@@ -17,8 +17,9 @@ function SearchComponent() {
                 const data = await response.json();
                 const formattedData = [{
                     id: data.id,
-                    empName: data.name,
-                    height: data.height
+                    name: data.name,
+                    height: data.height,
+                    frontDefault : data.sprites.front_default
                 }];
                 setPokemonData(formattedData);
               } catch (error) {
